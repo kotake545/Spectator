@@ -64,7 +64,7 @@ public class SpectatorUtil {
 		player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY,9999*20,0));
 		player.setAllowFlight(true);
 		player.setFlying(true);
-		Spectator.getSpectatorManager().setWidthHeight(player, 0.0F, 0.0F, 0.0F);
+		Spectator.getSpectatorManager().setHeight(player, 0.0F, 0.0F, 0.0F);
 		for(Player other:Bukkit.getOnlinePlayers()){
 			 if (other != player) {
 				 other.hidePlayer(player);
@@ -136,7 +136,7 @@ public class SpectatorUtil {
 			 player.setAllowFlight(false);
 				player.setFlying(false);
 		}
-		Spectator.getSpectatorManager().setWidthHeight(player, 0.0F, 0.6F, 1.8F);
+		Spectator.getSpectatorManager().setHeight(player, 0.0F, 0.6F, 1.8F);
 		for(Player other:Bukkit.getOnlinePlayers()){
 			 if (other != player) {
 				 other.showPlayer(player);

@@ -10,43 +10,56 @@ import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.Player;
 
 public class SpectatorManager{
+	@SuppressWarnings("unused")
 	private SimpleCommandMap commandMap;
-	private String currentVersion;
+	private String Version;
 	private Object propertyManager;
 	public SpectatorManager(){
 		try {
 			this.commandMap = ((SimpleCommandMap)Bukkit.getServer().getClass().getDeclaredMethod("getCommandMap", new Class[0]).invoke(Bukkit.getServer(), new Object[0]));
 			Object obj = Bukkit.getServer().getClass().getDeclaredMethod("getServer", new Class[0]).invoke(Bukkit.getServer(), new Object[0]);
 			this.propertyManager = obj.getClass().getDeclaredMethod("getPropertyManager", new Class[0]).invoke(obj, new Object[0]);
-			this.currentVersion = this.propertyManager.getClass().getPackage().getName();
+			this.Version = this.propertyManager.getClass().getPackage().getName();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 更新用。
+	 * @param p
+	 * @param x
+	 * @param z
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void sendChunk(Player p, int x, int z){
 		try {
 			Object obj = p.getClass().getDeclaredMethod("getHandle", new Class[0]).invoke(p, new Object[0]);
 			List list = (List)obj.getClass().getField("chunkCoordIntPairQueue").get(obj);
-			Constructor con = Class.forName(this.currentVersion + ".ChunkCoordIntPair").getConstructor(new Class[] { Integer.TYPE, Integer.TYPE });
+			Constructor con = Class.forName(this.Version + ".ChunkCoordIntPair").getConstructor(new Class[] { Integer.TYPE, Integer.TYPE });
 			list.add(con.newInstance(new Object[] { Integer.valueOf(x), Integer.valueOf(z) }));
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 	}
-
-	public void setWidthHeight(Player p, float height, float width, float length){
+	/**
+	 * 判定変更。デフォルト:0.0F, 0.6F, 1.8F
+	 * @param p
+	 * @param height
+	 * @param width
+	 * @param length
+	 */
+	public void setHeight(Player p, float height, float width, float length){
 		try{
 			Method handle = p.getClass().getMethod("getHandle", new Class[0]);
-			Class<?> c = Class.forName(this.currentVersion + ".Entity");
-			Field field1 = c.getDeclaredField("height");
-			Field field2 = c.getDeclaredField("width");
-			Field field3 = c.getDeclaredField("length");
-			field1.setFloat(handle.invoke(p, new Object[0]), height);
-			field2.setFloat(handle.invoke(p, new Object[0]), width);
-			field3.setFloat(handle.invoke(p, new Object[0]), length);
-		}catch (Exception ex){
-			ex.printStackTrace();
+			Class<?> c = Class.forName(this.Version + ".Entity");
+			Field heightfield = c.getDeclaredField("height");
+			Field widthfield = c.getDeclaredField("width");
+			Field lengthfield = c.getDeclaredField("length");
+			heightfield.setFloat(handle.invoke(p, new Object[0]), height);
+			widthfield.setFloat(handle.invoke(p, new Object[0]), width);
+			lengthfield.setFloat(handle.invoke(p, new Object[0]), length);
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 }
