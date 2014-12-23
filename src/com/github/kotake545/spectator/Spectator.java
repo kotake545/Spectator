@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -23,10 +22,6 @@ import com.github.kotake545.spectator.listener.SpectatorListener;
 public class Spectator extends JavaPlugin {
 	public static FileConfiguration config;
     public static Spectator instance;
-    public static String barMessage = " ";
-    public static String[] barmeStrings = new String[]{"kotake545.ddo.jp:25252","KotakeGunOnline - Welcome!","Gamemode:TDM,Infect,MGO","Click the clock!!"};
-    public static int bar = 0;
-    public static String sideMessage = ChatColor.AQUA+""+ChatColor.BOLD+" KotakeGunOnline ";
     public static Collection<Player> spectators;
 	public static YamlConfiguration spectator;
 	private static SpectatorManager spectatorManager;
