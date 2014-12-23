@@ -1,0 +1,15 @@
+BuriedAliveCheck: false
+opShowMode: false
+spectatorSetOnDeath: false
+spectatorInventoryClear: true
+spectatorReturnInventory: true
+
+spectatorChatMode: true
+
+#<player> = playername <msg> = chat
+spectatorChat: "&3[Spectator]&7<&4<player>&7>&7 <msg>"
+seeSpectatorInvisible: false
+spectatorSetOnJoin: false
+spectatorRemoveOnQuit: true
+spectatorRemoveOnTeleportWorld: false
+spectatorSetOnFirstJoin: false

@@ -1,0 +1,23 @@
+name: Spectator
+main: com.github.kotake545.spectator.Spectator
+version: 0.3
+authors: [kotake545]
+commands:
+ spectator:
+    description: spectator
+    aliases: [spectator, scommand]
+    usage: /spectator
+    permission: spectator.command
+    permission-message: You don't have <permission>
+ spectatorjoin:
+    description: spectatorjoin
+    aliases: [spectatorjoin, sjoin]
+    usage: /sjoin
+    permission: spectator.join
+    permission-message: You don't have <permission>
+ spectatorleave:
+    description: spectatorleave
+    aliases: [spectatorleave, sleave]
+    usage: /sleave
+    permission: spectator.leave
+    permission-message: You don't have <permission>
